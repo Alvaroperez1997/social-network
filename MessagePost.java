@@ -90,9 +90,11 @@ public class MessagePost
     /**
      * Devuelve una cadena desde que se ha creado hasta ahora
      */
-    private static String timeString(long time)
+    private String timeString(long time)
     {
-        String timeString = null;
+        long minutos = (getTimeStamp() /60);
+        long segundos = (getTimeStamp() %60);
+        String timeString = "segundos: " + segundos + " minutos: " + minutos;
         return timeString;
     }
 }
