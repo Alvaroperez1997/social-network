@@ -23,6 +23,7 @@ public class PhotoPost
         username = author;
         this.filename = filename;
         this.caption = caption;
+        timestamp = System.currentTimeMillis();
         likes = 0;
         comments = new ArrayList<>();
     }
@@ -70,6 +71,13 @@ public class PhotoPost
     }
     
     /**
+     * Cuanto tiempo lleva desde que se ha creado hasta ahora
+     */
+    public long getTimeStamp(){
+        return (System.currentTimeMillis() - timestamp)/1000;
+    }
+    
+    /**
      * Muestra todas las caracteristicas de las entradas
      * El tiempo que nos muestra es el que ha transcurrido
      * desde que se creo hasta que se esta visualizando
@@ -79,14 +87,25 @@ public class PhotoPost
         System.out.println("Autor del Photopost: " + username);
         System.out.println("Texto del Photopost: " + filename);
         System.out.println("Titulo del Photopost: " + caption);
+        System.out.println("Duracion del post: " + getTimeStamp()/60 + "' " + getTimeStamp()%60 + "''");
         System.out.println("Likes: " + likes);
+        if (comments.size() == 0) {
+            System.out.println("Este post no tiene comentarios");
+        }
+        else {
+            System.out.println("Comentarios: ");
+            for (int i = 0; i < comments.size(); i++) {
+                System.out.println(comments.get(i));
+            }
+        }
     }
     
     /**
-     * 
+     * Devuelve una cadena desde que se ha creado hasta ahora
      */
-    //private static String timeString(long time)
-    //{
-    //    return
-    //}
+    private static String timeString(long time)
+    {
+        String timeString = null;
+        return timeString;
+    }
 }

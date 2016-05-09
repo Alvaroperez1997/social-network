@@ -21,6 +21,7 @@ public class MessagePost
     {
         username = author;
         message = text;
+        timestamp = System.currentTimeMillis();
         likes = 0;
         comments = new ArrayList<>();
     }
@@ -37,7 +38,9 @@ public class MessagePost
      * Quita un like al post
      */
     public void unlike(){
-        likes--;
+        if(likes > 0) {
+            likes--;
+        }
     }
     
     /**
@@ -56,11 +59,11 @@ public class MessagePost
     }
     
     /**
-     * 
+     * Cuanto tiempo lleva desde que se ha creado hasta ahora
      */
-    //public long getTimeStamp(){
-    //    return
-    //}
+    public long getTimeStamp(){
+        return (System.currentTimeMillis() - timestamp)/1000;
+    }
     
     /**
      * Muestra todas las caracteristicas de las entradas
@@ -71,6 +74,25 @@ public class MessagePost
     {
         System.out.println("Autor del post: " + username);
         System.out.println("Texto del post: " + message);
+        System.out.println("Duracion del post: " + getTimeStamp()/60 + "' " + getTimeStamp()%60 + "''");
         System.out.println("Likes: " + likes);
+        if (comments.size() == 0) {
+            System.out.println("Este post no tiene comentarios");
+        }
+        else {
+            System.out.println("Comentarios: ");
+            for (int i = 0; i < comments.size(); i++) {
+                System.out.println(comments.get(i));
+            }
+        }
+    }
+    
+    /**
+     * Devuelve una cadena desde que se ha creado hasta ahora
+     */
+    private static String timeString(long time)
+    {
+        String timeString = null;
+        return timeString;
     }
 }
